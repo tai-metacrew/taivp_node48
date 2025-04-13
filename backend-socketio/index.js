@@ -19,7 +19,13 @@ io.on("connection", (socket) => {
   io.emit("sendMessage", { message: "Hello from server" });
 
   socket.on("increament", () => {
-    console.log("Client send increment event");
+    console.log("Client send increment event 1");
+    count = count + 1;
+    io.emit("serverSendCount", { count });
+  });
+
+  socket.on("increament", (data) => {
+    console.log("Client send increment event 2", data);
     count = count + 1;
     io.emit("serverSendCount", { count });
   });
