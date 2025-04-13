@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
   socket.on("increament", () => {
     console.log("Client send increment event");
     count = count + 1;
-    io.emeit("serverSendCount", { count });
+    io.emit("serverSendCount", { count });
   });
 });
 
