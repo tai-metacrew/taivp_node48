@@ -19,7 +19,7 @@ const schema = buildSchema(`
     }
 
     type Mutation  {
-
+        createVideo: Video
     }
 `);
 
