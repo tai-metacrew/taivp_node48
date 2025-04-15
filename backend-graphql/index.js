@@ -28,6 +28,14 @@ const resolver = {
   videos: async () => {
     return await prisma.videos.findMany();
   },
+  createVideo: async () => {
+    return await prisma.videos.create({
+      data: {
+        video_name: "New Video",
+        thumbnail: "google.com",
+      },
+    });
+  },
 };
 
 //define graphql endpoint
