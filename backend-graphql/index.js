@@ -16,6 +16,7 @@ const schema = buildSchema(`
 
     type Query{
         videos: [Video]
+        video(id: Int): Video
     }
 
     type Mutation  {
@@ -27,6 +28,13 @@ const schema = buildSchema(`
 const resolver = {
   videos: async () => {
     return await prisma.videos.findMany();
+  },
+  video: async ({ id }) => {
+    return await prisma.videos.findFirst({
+      where: {
+        video_id: id,
+      },
+    });
   },
   createVideo: async () => {
     return await prisma.videos.create({
